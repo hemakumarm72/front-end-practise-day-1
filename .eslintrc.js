@@ -47,6 +47,13 @@ module.exports = {
                 },
             },
         ],
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto',
+            },
+            { usePrettierrc: true },
+        ],
         'jsx-a11y/label-has-for': [
             'error',
             {
