@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Routes, Switch, Route } from 'react-router-dom';
+// import { BrowserRouter as Routes, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { lazy } from '@loadable/component';
 import { Loader } from 'Elements';
 
@@ -8,16 +9,17 @@ const Loginpages = lazy(() =>
 );
 function Routers() {
     return (
-        <Routes>
+        <Router>
             <Suspense fallback={<Loader />}>
                 {/* <Header /> */}
-                <Switch>
-                    <Route path="/" exact component={Loginpages} />
+
+                <Routes>
+                    <Route path="/" element={<Loginpages />} />
 
                     {/* <Route path="/services" component={Logopages} /> */}
-                </Switch>
+                </Routes>
             </Suspense>
-        </Routes>
+        </Router>
     );
 }
 
