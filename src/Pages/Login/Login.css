@@ -6,7 +6,7 @@
 }
 
 .screen {
-    border: 3px solid rgb(157, 18, 222);
+   
     display: flex;
     justify-content: center;
     width: 100%;
@@ -14,13 +14,13 @@
 }
 
 .screen1 {
-    border: 2px solid green;
+ 
     width: 50%;
     height: 100%;
 }
 
 .screen2 {
-    border: 2px solid yellow;
+   
     width: 50%;
     height: 100%;
 }
@@ -37,7 +37,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
-    border: 2px solid red;
+  
     margin-top: 100px;
 }
 
@@ -51,13 +51,90 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    border: 2px solid red;
+   
     margin-top: 90px;
+    justify-content: center;
 }
 
 .loginfield h3 {
     font-family: 'Barlow', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     letter-spacing: 1px;
-    font-weight: 600px;
+    font-weight: 700;
+}
+
+.login {
+    color: rgba(9, 9, 9, 0.45);
+}
+
+input {
+    background-image: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+.form_field {
+    display: flex;
+    margin: 0.875rem;
+}
+.login input[type='text'],
+.login input[type='password'] {
+    background-color: #e6e3e37e;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.login label {
+    background-color: #fbfbf6;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+}
+.login label,
+.login input[type='text'],
+.login input[type='password'],
+.login input[type='submit'] {
+    border-radius: 0.25rem;
+    padding: 10px;
+}
+
+.form input[type='password'],
+.form input[type='text'],
+.form input[type='submit'] {
+    width: 100%;
+}
+.login input[type='password']:focus,
+.login input[type='password']:hover,
+.login input[type='text']:focus,
+.login input[type='text']:hover {
+    background-color: #dbe0e6;
+}
+
+.hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.login input[type='submit'] {
+    font-family: 'Barlow', sans-serif;
+    background-color: #54b4d3;
+    color: #eee;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.login input[type='submit']:hover {
+    background-color: #288dae;
 }

@@ -63,7 +63,11 @@ function Login() {
                                     />
                                 </div>
                                 <div className="form_field">
-                                    <input type="submit" value="Sign In" />
+                                    <input
+                                        type="submit"
+                                        className="form_input"
+                                        value="Sign In"
+                                    />
                                 </div>
                             </form>
                         </div>
