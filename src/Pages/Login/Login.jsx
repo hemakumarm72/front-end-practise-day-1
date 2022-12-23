@@ -31,42 +31,41 @@ function Login() {
 
                         <div className="loginfield">
                             <h3>Log in</h3>
-                            <form
-                                action="#"
-                                method="#"
-                                className="form_filed"
-                            />
-                            <div className="form_field">
-                                <label htmlFor="login_username">
-                                    <FaUser />
-                                    <span className="hidden">Username</span>
-                                </label>
+                            <form action="#" method="#" className="form login">
+                                <div className="form_field">
+                                    <label htmlFor="login_username">
+                                        <FaUser />
+                                        <span className="hidden">Username</span>
+                                    </label>
 
-                                <input
-                                    type="text"
-                                    className="form_input"
-                                    id="login_username"
-                                    name="username"
-                                    placeholder="Username"
-                                    required
-                                />
-                            </div>
+                                    <input
+                                        type="text"
+                                        className="form_input"
+                                        id="login_username"
+                                        name="username"
+                                        placeholder="Username"
+                                        required
+                                    />
+                                </div>
+                                <div className="form_field">
+                                    <label htmlFor="login_password">
+                                        <FaLock />
+                                        <span className="hidden">Password</span>
+                                    </label>
 
-                            <div className="form_field">
-                                <label htmlFor="login_password">
-                                    <FaLock />
-                                    <span className="hidden">Password</span>
-                                </label>
-
-                                <input
-                                    type="text"
-                                    className="form_input"
-                                    id="login_password"
-                                    name="password"
-                                    placeholder="Password"
-                                    required
-                                />
-                            </div>
+                                    <input
+                                        type="text"
+                                        className="form_input"
+                                        id="login_password"
+                                        name="password"
+                                        placeholder="Password"
+                                        required
+                                    />
+                                </div>
+                                <div className="form_field">
+                                    <input type="submit" value="Sign In" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div className="screen2">
