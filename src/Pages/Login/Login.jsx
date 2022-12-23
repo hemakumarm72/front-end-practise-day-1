@@ -3,8 +3,10 @@ import { Container } from 'Components';
 import './Login.css';
 import { lazy } from '@loadable/component';
 import { FaUser, FaLock } from 'react-icons/fa';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import sideimage from '../../Asset/image/img3.webp';
 import crow from '../../Asset/image/crow-solid.svg';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 // import { Container } from './styles';
 // import { Helmetdata } from 'Elements';
 
@@ -80,7 +82,14 @@ function Login() {
                         </div>
                     </div>
                     <div className="screen2">
-                        <img className="scree1img" src={sideimage} alt="" />
+                        <LazyLoadImage
+                            className="scree1img"
+                            src={sideimage}
+                            alt="screen Alt 1"
+                            //  effect="blur"
+                            width="100%"
+                            height="100%"
+                        />
                     </div>
                 </div>
             </Container>
