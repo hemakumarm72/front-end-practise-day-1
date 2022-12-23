@@ -70,6 +70,13 @@ function Login() {
                                     />
                                 </div>
                             </form>
+                            <p className="forgot_password">Forgot password?</p>
+                            <p className="registernew">
+                                Don&apos;t have an account?
+                                <a href="#!" className="link-info">
+                                    Register here
+                                </a>
+                            </p>
                         </div>
                     </div>
                     <div className="screen2">
