@@ -27,7 +27,13 @@ function Login() {
                 <div className="screen">
                     <div className="screen1">
                         <div className="logo">
-                            <img className="crow" src={crow} alt="" />
+                            <img
+                                className="crow"
+                                src={crow}
+                                alt="crow 1"
+                                height="40px"
+                                width="40px"
+                            />
                             <h2 className="logo_text">Logo</h2>
                         </div>
 

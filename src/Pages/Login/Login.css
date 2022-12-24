@@ -79,6 +79,13 @@ input {
     display: flex;
     margin: 0.875rem;
 }
+.login label,
+.login input[type='text'],
+.login input[type='password'],
+.login input[type='submit'] {
+    border-radius: 0.25rem;
+    padding: 10px;
+}
 .login input[type='text'],
 .login input[type='password'] {
     background-color: #e6e3e37e;
@@ -91,13 +98,6 @@ input {
     border-top-right-radius: 0;
     padding-right: 1.25rem;
     padding-left: 1.25rem;
-}
-.login label,
-.login input[type='text'],
-.login input[type='password'],
-.login input[type='submit'] {
-    border-radius: 0.25rem;
-    padding: 10px;
 }
 
 .form input[type='password'],
