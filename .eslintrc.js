@@ -36,6 +36,7 @@ module.exports = {
             'error',
             { devDependencies: true },
         ],
+        'no-console': 0,
         'react/prefer-stateless-function': 0,
         'react/state-in-constructor': 0,
         'react/no-unused-state': -0,

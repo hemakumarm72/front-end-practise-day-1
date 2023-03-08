@@ -8,14 +8,14 @@ module.exports = {
             // gzip plugin
             filename: '[path].gz[query]',
             algorithm: 'gzip',
-            test: /\.(js|css|html|svg)$/,
+            test: /\.(js|css|html|svg|scss)$/,
             threshold: 8192,
             minRatio: 0.8,
         }),
         new BrotliPlugin({
             // brotli plugin
             asset: '[path].br[query]',
-            test: /\.(js|css|html|svg)$/,
+            test: /\.(js|css|html|svg|scss)$/,
             threshold: 10240,
             minRatio: 0.8,
         }),
@@ -23,6 +23,6 @@ module.exports = {
     ],
     mode: 'development',
     resolve: {
-        extensions: ['.js', '.jsx', '.css'],
+        extensions: ['.js', '.jsx', '.css', '.scss'],
     },
 };
