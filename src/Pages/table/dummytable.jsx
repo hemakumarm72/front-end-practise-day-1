@@ -37,7 +37,26 @@ function dummytable() {
         () =>
             createTheme({
                 palette: {
-                    mode: 'light',
+                    mode: 'dark',
+                    primary: {
+                        main: '#00796b',
+                    }, // swap in the secondary color as the primary for the table // loading progress
+                    secondary: {
+                        main: '#8c9eff',
+                    },
+                    info: {
+                        main: '#fff9c4', // add in a custom color for the toolbar alert background stuff
+                    },
+                    background: {
+                        default:
+                            globalTheme.palette.mode === 'light'
+                                ? '#424242' // random light yellow color for the background in light mode
+                                : '#000', // pure black table in dark mode for fun
+                    },
+                    typography: {
+                        fontFamily: 'Raleway, Arial',
+                        fontSize: '1rem',
+                    },
                 },
             }),
         [globalTheme]
@@ -78,7 +97,7 @@ function dummytable() {
                 header: 'Vehicle Model',
                 minSize: 50, // min size enforced during resizing
                 maxSize: 100, // max size enforced during resizing
-                size: 50, // medium column
+                size: 10, // medium column
             },
         ],
         []
@@ -96,7 +115,7 @@ function dummytable() {
                     setTimeout(() => {
                         setDriver(res.data?.data?.driver ?? []);
                         setLoading(false);
-                    }, 1000);
+                    }, 0);
                 }
                 return res;
             })
@@ -163,7 +182,7 @@ function dummytable() {
                         displayColumnDefOptions={{
                             'mrt-row-actions': {
                                 header: 'Action', // change header text
-                                //  size: 0, // make actions column wider
+                                size: 0, // make actions column wider
                             },
                         }}
                         enableRowActions

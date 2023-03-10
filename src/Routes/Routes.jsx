@@ -16,6 +16,10 @@ const Newspages = lazy(() =>
     import('Pages').then((module) => module.Newspages)
 );
 
+const OpenDialogpages = lazy(() =>
+    import('Pages').then((module) => module.OpenDialog)
+);
+
 function Routers() {
     return (
         <Router>
@@ -25,7 +29,8 @@ function Routers() {
                 <Routes>
                     <Route path="/login" element={<Loginpages />} />
                     <Route path="/button" element={<Newspages />} />
-                    <Route path="/" element={<DummyTablepages />} />
+                    <Route path="/table" element={<DummyTablepages />} />
+                    <Route path="/" element={<OpenDialogpages />} />
 
                     {/* <Route path="/services" component={Logopages} /> */}
                 </Routes>
