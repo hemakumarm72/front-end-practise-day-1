@@ -30,7 +30,8 @@ module.exports = {
     rules: {
         'linebreak-style': 0,
         'react/prop-types': 0,
-        'no-unused-vars': 0,
+        camelcase: 0,
+        'react/jsx-pascal-case': 0,
         'import/prefer-default-export': 0,
         'import/no-unresolved': 0,
         'import/no-extraneous-dependencies': [

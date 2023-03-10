@@ -1,66 +1,190 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import MaterialReactTable from 'material-react-table';
+import MaterialReactTable, {
+    MRT_ToggleGlobalFilterButton,
+    MRT_ToggleFiltersButton,
+    MRT_ShowHideColumnsButton,
+    MRT_ToggleDensePaddingButton,
+    MRT_FullScreenToggleButton,
+} from 'material-react-table';
 import './table.scss';
+
 import axios from 'axios';
+import {
+    IconButton,
+    Box,
+    Tooltip,
+    ThemeProvider,
+    createTheme,
+    useTheme,
+} from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
+// import PrintIcon from '@mui/icons-material/Print';
+import DownloadIcon from '@mui/icons-material/Download';
+// import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function dummytable() {
     const [loading, setLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
     const [driver, setDriver] = useState([]);
+    const [pagination, setPagination] = useState({
+        pageIndex: 0,
+        pageSize: 5,
+    });
+    const globalTheme = useTheme();
+
+    const tableTheme = useMemo(
+        () =>
+            createTheme({
+                palette: {
+                    mode: 'light',
+                },
+            }),
+        [globalTheme]
+    );
+
+    const columns = useMemo(
+        () => [
+            {
+                accessorKey: 'username',
+                header: 'User Name',
+                minSize: 50, // min size enforced during resizing
+                maxSize: 100, // max size enforced during resizing
+                size: 50, // medium column
+            },
+            {
+                accessorKey: 'address',
+                header: 'Address',
+                minSize: 50, // min size enforced during resizing
+                maxSize: 100, // max size enforced during resizing
+                size: 50, // medium column
+            },
+            {
+                accessorKey: 'mobile_no',
+                header: 'Mobile No',
+                minSize: 50, // min size enforced during resizing
+                maxSize: 100, // max size enforced during resizing
+                size: 50, // medium column
+            },
+            {
+                accessorKey: 'area',
+                header: 'Area',
+                minSize: 50, // min size enforced during resizing
+                maxSize: 100, // max size enforced during resizing
+                size: 50, // medium column
+            },
+            {
+                accessorKey: 'vehicle_model',
+                header: 'Vehicle Model',
+                minSize: 50, // min size enforced during resizing
+                maxSize: 100, // max size enforced during resizing
+                size: 50, // medium column
+            },
+        ],
+        []
+    ); // column definitions...
+
+    const handleExport = async () => {
+        console.log('data export');
+    };
     const fetch = async () => {
         setLoading(true);
         await axios
             .get('https://api.chopeai.com/api/utils/getdriver')
             .then((res) => {
                 if (res) {
-                    setDriver(res.data?.data?.driver ?? []);
+                    setTimeout(() => {
+                        setDriver(res.data?.data?.driver ?? []);
+                        setLoading(false);
+                    }, 1000);
                 }
                 return res;
             })
             .catch((err) => {
+                setIsError(true);
+                setLoading(false);
                 return err;
             });
-        setLoading(false);
     };
+
     useEffect(() => {
         fetch();
     }, []);
-    console.log(loading);
-    console.log(driver);
-    const columns = useMemo(
-        () => [
-            {
-                accessorKey: 'username',
-                header: 'User Name',
-            },
-            {
-                accessorKey: 'address',
-                header: 'Address',
-            },
-            {
-                accessorKey: 'mobile_no',
-                header: 'Mobile No',
-            },
-            {
-                accessorKey: 'area',
-                header: 'Area',
-            },
-            {
-                accessorKey: 'vehicle_model',
-                header: 'Vehicle Model',
-            },
-        ],
-        []
-    ); // column definitions...
-    console.log(columns);
-
     return (
         <div>
             <div className="table">
-                <MaterialReactTable
-                    columns={columns}
-                    state={{ showProgressBars: loading }}
-                    data={driver}
-                />
+                <ThemeProvider theme={tableTheme}>
+                    <MaterialReactTable
+                        columns={columns}
+                        data={driver}
+                        initialState={{ showColumnFilters: false }}
+                        // muiTableContainerProps={{
+                        //     sx: { maxHeight: '300px' }, // give the table a max height
+                        // }}
+                        defaultColumn={{
+                            minSize: 50, // min size enforced during resizing
+                            maxSize: 100, // max size enforced during resizing
+                            size: 50, // medium column
+                        }}
+                        muiToolbarAlertBannerProps={
+                            isError
+                                ? {
+                                      color: 'error',
+                                      children: 'Error loading data',
+                                  }
+                                : undefined
+                        }
+                        muiTablePaginationProps={{
+                            rowsPerPageOptions: [5, 10, 15, 20, 50, 100],
+                        }}
+                        onPaginationChange={setPagination}
+                        renderTopToolbarCustomActions={() => (
+                            <Tooltip arrow title="Refresh Data">
+                                <IconButton onClick={() => fetch()}>
+                                    <RefreshIcon />
+                                </IconButton>
+                            </Tooltip>
+                        )}
+                        renderToolbarInternalActions={({ table }) => (
+                            <Box>
+                                <MRT_ToggleGlobalFilterButton table={table} />
+                                <MRT_ToggleFiltersButton table={table} />
+                                <MRT_ShowHideColumnsButton table={table} />
+                                <Tooltip arrow title="Export Excel">
+                                    <IconButton onClick={handleExport}>
+                                        <DownloadIcon />
+                                    </IconButton>
+                                </Tooltip>
+
+                                <MRT_ToggleDensePaddingButton table={table} />
+                                <MRT_FullScreenToggleButton table={table} />
+                            </Box>
+                        )}
+                        displayColumnDefOptions={{
+                            'mrt-row-actions': {
+                                header: 'Action', // change header text
+                                //  size: 0, // make actions column wider
+                            },
+                        }}
+                        enableRowActions
+                        positionActionsColumn="last"
+                        renderRowActions={({ row }) => (
+                            <Box sx={{ display: 'flex' }}>
+                                <IconButton
+                                    onClick={() => console.info(row.original)}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            </Box>
+                        )}
+                        state={{
+                            showProgressBars: loading,
+                            // showSkeletons: loading,
+                            showAlertBanner: isError,
+                            pagination,
+                        }}
+                    />
+                </ThemeProvider>
             </div>
         </div>
     );
