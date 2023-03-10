@@ -138,23 +138,25 @@ function dummytable() {
             })
             .then((res) => {
                 if (res) {
-                    setOpen(false);
                     toast.success(res.data.data.message, {
                         autoClose: 2000,
                         transition: Slide,
                     });
+                    setOpen(false);
+
+                    fetch();
                 }
                 return res;
             })
             .catch((err) => {
-                setOpen(false);
-                toast.error(err.response?.data?.data?.message ?? err, {
+                toast.error(err?.response?.data?.data?.message ?? err, {
                     autoClose: 2000,
                     transition: Slide,
                 });
+                setOpen(false);
+                fetch();
                 return err;
             });
-        fetch();
     };
     const dialogclose = () => {
         setOpen(false);
