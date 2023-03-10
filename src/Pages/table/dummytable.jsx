@@ -239,7 +239,7 @@ function dummytable() {
                         )}
                         state={{
                             showProgressBars: loading,
-                            showSkeletons: loading,
+                            // showSkeletons: loading,
                             showAlertBanner: isError,
                             pagination,
                         }}
