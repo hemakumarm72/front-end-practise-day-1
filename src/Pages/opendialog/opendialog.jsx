@@ -8,41 +8,33 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import './opendialog.scss';
 
-function opendialog() {
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+function opendialog({ dialogclickagree, dialogclickdisagree, dialogstatus }) {
     return (
         <div>
             <div className="opendialog">
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    Open alert dialog
-                </Button>
                 <Dialog
-                    open={open}
-                    onClose={handleClose}
+                    // PaperProps={{
+                    //     style: {
+                    //         boxShadow: 'none',
+                    //         background: 'red',
+                    //     },
+                    // }}
+                    open={dialogstatus}
+                    onClose={dialogclickdisagree}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        Use Googles location service?
+                        Confirm delete
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            Let Google help apps determine location. This means
-                            sending anonymous location data to Google, even when
-                            no apps are running.
+                            Do you really want to delete these records?
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Disagree</Button>
-                        <Button onClick={handleClose} autoFocus>
+                        <Button onClick={dialogclickdisagree}>Disagree</Button>
+                        <Button onClick={dialogclickagree} autoFocus>
                             Agree
                         </Button>
                     </DialogActions>

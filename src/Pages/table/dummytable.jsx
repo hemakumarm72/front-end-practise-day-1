@@ -22,8 +22,12 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import DownloadIcon from '@mui/icons-material/Download';
 // import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { OpenDialog } from 'Pages';
 
 function dummytable() {
+    const [open, setOpen] = useState(false);
+    const [data_id, setData_id] = useState('');
+
     const [loading, setLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const [driver, setDriver] = useState([]);
@@ -103,7 +107,7 @@ function dummytable() {
         []
     ); // column definitions...
 
-    const handleExport = async () => {
+    const handleExport = () => {
         console.log('data export');
     };
     const fetch = async () => {
@@ -124,6 +128,19 @@ function dummytable() {
                 setLoading(false);
                 return err;
             });
+    };
+    const dialogagree = async () => {
+        console.log(data_id);
+
+        setOpen(false);
+        fetch();
+    };
+    const dialogclose = () => {
+        setOpen(false);
+    };
+    const deletedata = async (id) => {
+        setOpen(true);
+        setData_id(id);
     };
 
     useEffect(() => {
@@ -190,7 +207,9 @@ function dummytable() {
                         renderRowActions={({ row }) => (
                             <Box sx={{ display: 'flex' }}>
                                 <IconButton
-                                    onClick={() => console.info(row.original)}
+                                    onClick={() =>
+                                        deletedata(row?.original?._id ?? null)
+                                    }
                                 >
                                     <DeleteIcon />
                                 </IconButton>
@@ -198,10 +217,15 @@ function dummytable() {
                         )}
                         state={{
                             showProgressBars: loading,
-                            // showSkeletons: loading,
+                            showSkeletons: loading,
                             showAlertBanner: isError,
                             pagination,
                         }}
+                    />
+                    <OpenDialog
+                        dialogclickagree={dialogagree}
+                        dialogclickdisagree={dialogclose}
+                        dialogstatus={open}
                     />
                 </ThemeProvider>
             </div>

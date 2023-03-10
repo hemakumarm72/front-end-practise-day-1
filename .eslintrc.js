@@ -31,6 +31,7 @@ module.exports = {
         'linebreak-style': 0,
         'react/prop-types': 0,
         camelcase: 0,
+        'no-underscore-dangle': 0,
         'react/jsx-pascal-case': 0,
         'import/prefer-default-export': 0,
         'import/no-unresolved': 0,
