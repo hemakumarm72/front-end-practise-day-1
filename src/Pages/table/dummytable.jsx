@@ -132,6 +132,7 @@ function dummytable() {
     }; // load of data in table with api
     const dialogagree = async () => {
         console.log(data_id);
+        setOpen(false);
         await axios
             .post('https://api.chopeai.com/api/utils/driverdelete', {
                 _id: data_id,
@@ -142,7 +143,6 @@ function dummytable() {
                         autoClose: 2000,
                         transition: Slide,
                     });
-                    setOpen(false);
 
                     fetch();
                 }
@@ -153,7 +153,6 @@ function dummytable() {
                     autoClose: 2000,
                     transition: Slide,
                 });
-                setOpen(false);
                 fetch();
                 return err;
             });
