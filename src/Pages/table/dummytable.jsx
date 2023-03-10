@@ -23,6 +23,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 // import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { OpenDialog } from 'Pages';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 
 function dummytable() {
     const [open, setOpen] = useState(false);
@@ -128,11 +129,31 @@ function dummytable() {
                 setLoading(false);
                 return err;
             });
-    };
+    }; // load of data in table with api
     const dialogagree = async () => {
         console.log(data_id);
-
-        setOpen(false);
+        await axios
+            .post('https://api.chopeai.com/api/utils/driverdelete', {
+                _id: data_id,
+            })
+            .then((res) => {
+                if (res) {
+                    setOpen(false);
+                    toast.success(res.data.data.message, {
+                        autoClose: 2000,
+                        transition: Slide,
+                    });
+                }
+                return res;
+            })
+            .catch((err) => {
+                setOpen(false);
+                toast.error(err.response?.data?.data?.message ?? err, {
+                    autoClose: 2000,
+                    transition: Slide,
+                });
+                return err;
+            });
         fetch();
     };
     const dialogclose = () => {
@@ -227,6 +248,7 @@ function dummytable() {
                         dialogclickdisagree={dialogclose}
                         dialogstatus={open}
                     />
+                    <ToastContainer />
                 </ThemeProvider>
             </div>
         </div>
