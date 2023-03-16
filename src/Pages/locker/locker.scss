@@ -1,0 +1,76 @@
+:root {
+    --yellow: linear-gradient(180deg, #f8d49a -146.42%, #fad79d -46.42%);
+    --orange: #fca61f;
+    --black: #242d49;
+    --gray: #788097;
+    --purple: linear-gradient(180deg, #bb67ff 0%, #c484f3 100%);
+    --pink: #ff919d;
+    --glass: rgba(255, 255, 255, 0.54);
+    --glass1: rgb(31, 163, 28);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --activeItem: #f799a354;
+}
+
+.lockerBackground {
+    background: linear-gradient(
+        106.37deg,
+        #ffe1bc 29.63%,
+        #ffcfd1 51.55%,
+        #f3c6f1 90.85%
+    );
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    font-family: 'Inter', sans-serif;
+}
+
+.lockerglass {
+    background: var(--glass);
+    height: 97%;
+    width: 97%;
+    border-radius: 1rem;
+}
+
+.row {
+    display: grid;
+    grid-auto-rows: auto;
+    gap: 15px;
+    padding: 16px;
+    @media (min-width: 500px) {
+        grid-template-columns: repeat(2, 2fr);
+    }
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media (min-width: 960px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+.lockercard {
+    display: flex;
+    width: 140px;
+    height: 140px;
+    padding: 10px 0px;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(
+        0deg,
+        rgba(34, 193, 195, 1) 0%,
+        rgba(253, 187, 45, 1) 100%
+    );
+
+    @media (max-width: 500px) {
+        margin: 0 auto;
+    }
+    p {
+        color: rgb(255, 255, 255);
+    }
+}

@@ -44,13 +44,13 @@ function dummytable() {
                 palette: {
                     mode: 'dark',
                     primary: {
-                        main: '#00796b',
+                        main: '#1de9b6',
                     }, // swap in the secondary color as the primary for the table // loading progress
-                    secondary: {
-                        main: '#8c9eff',
-                    },
+                    // secondary: {
+                    //     main: '#8c9eff',
+                    // },
                     info: {
-                        main: '#fff9c4', // add in a custom color for the toolbar alert background stuff
+                        main: 'rgb(255,122,0)', // add in a custom color for the toolbar alert background stuff
                     },
                     background: {
                         default:
@@ -58,10 +58,28 @@ function dummytable() {
                                 ? '#424242' // random light yellow color for the background in light mode
                                 : '#000', // pure black table in dark mode for fun
                     },
+
                     typography: {
+                        textTransform: 'none', // customize typography styles for all buttons in table by default
                         fontFamily: 'Raleway, Arial',
                         fontSize: '1rem',
                     },
+                    // components: {
+                    //     MuiTooltip: {
+                    //         styleOverrides: {
+                    //             tooltip: {
+                    //                 fontSize: '15.1rem', // override to make tooltip font size larger
+                    //             },
+                    //         },
+                    //     },
+                    //     MuiSwitch: {
+                    //         styleOverrides: {
+                    //             thumb: {
+                    //                 color: 'pink', // change the color of the switch thumb in the columns show/hide menu to pink
+                    //             },
+                    //         },
+                    //     },
+                    // },
                 },
             }),
         [globalTheme]
@@ -179,6 +197,15 @@ function dummytable() {
                         // muiTableContainerProps={{
                         //     sx: { maxHeight: '300px' }, // give the table a max height
                         // }}
+
+                        muiTableBodyProps={{
+                            sx: {
+                                // stripe the rows, make odd rows a darker color
+                                '& tr:nth-of-type(odd)': {
+                                    backgroundColor: '#424242',
+                                },
+                            },
+                        }}
                         defaultColumn={{
                             minSize: 50, // min size enforced during resizing
                             maxSize: 100, // max size enforced during resizing
@@ -205,17 +232,35 @@ function dummytable() {
                         )}
                         renderToolbarInternalActions={({ table }) => (
                             <Box>
-                                <MRT_ToggleGlobalFilterButton table={table} />
-                                <MRT_ToggleFiltersButton table={table} />
-                                <MRT_ShowHideColumnsButton table={table} />
+                                <MRT_ToggleGlobalFilterButton
+                                    table={table}
+                                    style={{ color: '#cfd8dc' }}
+                                />
+                                <MRT_ToggleFiltersButton
+                                    table={table}
+                                    style={{ color: '#cfd8dc' }}
+                                />
+                                <MRT_ShowHideColumnsButton
+                                    table={table}
+                                    style={{ color: '#cfd8dc' }}
+                                />
                                 <Tooltip arrow title="Export Excel">
-                                    <IconButton onClick={handleExport}>
+                                    <IconButton
+                                        onClick={handleExport}
+                                        style={{ color: '#cfd8dc' }}
+                                    >
                                         <DownloadIcon />
                                     </IconButton>
                                 </Tooltip>
 
-                                <MRT_ToggleDensePaddingButton table={table} />
-                                <MRT_FullScreenToggleButton table={table} />
+                                <MRT_ToggleDensePaddingButton
+                                    table={table}
+                                    style={{ color: '#cfd8dc' }}
+                                />
+                                <MRT_FullScreenToggleButton
+                                    table={table}
+                                    style={{ color: '#cfd8dc' }}
+                                />
                             </Box>
                         )}
                         displayColumnDefOptions={{
