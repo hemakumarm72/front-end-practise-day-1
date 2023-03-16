@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './locker.scss';
 import LockIcon from '@mui/icons-material/Lock';
 import { Slide, ToastContainer, toast } from 'react-toastify';
-
 import { LockerButton } from 'Elements';
 import axios from 'axios';
+import { Container } from 'Components';
+import { lazy } from '@loadable/component';
+
+const Helmetdatas = lazy(() =>
+    import('Elements').then((module) => module.Helmetdata)
+);
 
 function locker() {
     const [lockers, setLockers] = useState([]);
@@ -30,20 +35,30 @@ function locker() {
     }, []);
     // console.log(lockers);
     return (
-        <div className="lockerBackground">
-            <div className="lockerglass">
-                <div className="row">
-                    {lockers.map((d) => (
-                        <div className="lockercard">
-                            <LockIcon />
-                            <p>Locker {d.locker_number}</p>
-                            <LockerButton locker_id={d.id} />
+        <>
+            <Helmetdatas
+                title="Locker Unlock"
+                link={window.location.href}
+                description="Sentosa locker unlock"
+                pagesname="Locker Unlock"
+            />
+            <Container>
+                <div className="lockerBackground">
+                    <div className="lockerglass">
+                        <div className="row">
+                            {lockers.map((d) => (
+                                <div className="lockercard">
+                                    <LockIcon />
+                                    <p>Locker {d.locker_number}</p>
+                                    <LockerButton locker_id={d.id} />
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+                    <ToastContainer />
                 </div>
-            </div>
-            <ToastContainer />
-        </div>
+            </Container>
+        </>
     );
 }
 
