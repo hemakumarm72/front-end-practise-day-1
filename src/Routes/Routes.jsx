@@ -28,12 +28,16 @@ function Routers() {
                 {/* <Header /> */}
 
                 <Routes>
-                    <Route path="/login" element={<Loginpages />} />
-                    <Route path="/button" element={<Newspages />} />
-                    <Route path="/dummytable" element={<DummyTablepages />} />
-                    <Route path="/locker" extr element={<Locker />} />
-                    <Route path="/login1" element={<Login />} />
-                    <Route path="/" element={<Navbar />} />
+                    <Route exact path="/login" element={<Loginpages />} />
+                    <Route exact path="/button" element={<Newspages />} />
+                    <Route
+                        exact
+                        path="/dummytable"
+                        element={<DummyTablepages />}
+                    />
+                    <Route exact path="/locker" element={<Locker />} />
+                    <Route exact path="/login1" element={<Login />} />
+                    <Route exact path="/" element={<Navbar />} />
                     {/* <Route path="/" element={<OpenDialogpages />} /> */}
 
                     {/* <Route path="/services" component={Logopages} /> */}
