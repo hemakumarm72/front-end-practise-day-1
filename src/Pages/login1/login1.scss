@@ -7,7 +7,7 @@
 
 .logincontainer {
     display: flex;
-    min-height: 90vh;
+    min-height: 88vh;
     align-items: center;
     justify-content: center;
 }
@@ -110,11 +110,11 @@
 .containerwaves {
     position: absolute;
     width: 100%;
-    bottom: 0.3rem;
+    bottom: 0.2rem;
     .waves {
         width: 100%;
         background-color: inherit;
-        margin-bottom: -0.5375rem;
+        margin-bottom: -0.53rem;
         max-height: 111px;
     }
     .parallax > use {
