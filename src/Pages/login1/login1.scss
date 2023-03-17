@@ -51,15 +51,15 @@
         color: rgba(227, 225, 225, 0.825);
         margin: 0.7rem 0;
         padding: 0 1rem;
-    }
-    > input[type='text']::placeholder {
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        color: #ffffff;
-        /* identical to box height, or 143% */
+        > &::placeholder {
+            font-family: 'Lexend Deca';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #ffffff;
+            /* identical to box height, or 143% */
+        }
     }
 
     .labeldiv {
