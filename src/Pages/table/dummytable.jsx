@@ -6,7 +6,7 @@ import MaterialReactTable, {
     MRT_ToggleDensePaddingButton,
     MRT_FullScreenToggleButton,
 } from 'material-react-table';
-import './table.scss';
+import './table.scss'; /* Dynamic import */
 
 import axios from 'axios';
 import {
@@ -24,6 +24,9 @@ import DownloadIcon from '@mui/icons-material/Download';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { OpenDialog } from 'Pages';
 import { Slide, ToastContainer, toast } from 'react-toastify';
+// import { lazy } from '@loadable/component';
+
+// const MaterialReactTable = lazy(() => import('material-react-table'));
 
 function dummytable() {
     const [open, setOpen] = useState(false);

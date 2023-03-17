@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from 'Components';
 import './Login.css';
 import { lazy } from '@loadable/component';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Slide, ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 import sideimage from '../../Asset/image/img3.webp';
-import crow from '../../Asset/image/crow-solid.svg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import crow from '../../Asset/image/crow-solid.svg';
+
+// import { Helmetdatas } from '../../Elements';
 // import { Container } from './styles';
 // import { Helmetdata } from 'Elements';
 
@@ -15,6 +19,40 @@ const Helmetdatas = lazy(() =>
 );
 
 function Login() {
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+    });
+
+    const loginapi = () => {
+        axios
+            .post('https://api.chopeai.com/api/employee/login', user)
+            .then((res) => {
+                if (res) {
+                    console.log(res?.data.data ?? []);
+                    const Token = res?.data?.data?.token ?? null;
+
+                    sessionStorage.setItem('token', JSON.stringify(Token));
+                    console.log(
+                        'token',
+                        JSON.parse(sessionStorage.getItem('token'))
+                    );
+                    toast.success(res.data.data.message, {
+                        autoClose: 2000,
+                        transition: Slide,
+                    });
+                }
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                toast.error(err.response?.data?.data?.message ?? err, {
+                    autoClose: 2000,
+                    transition: Slide,
+                });
+                return err;
+            });
+    };
     return (
         <>
             <Helmetdatas
@@ -39,7 +77,7 @@ function Login() {
 
                         <div className="loginfield">
                             <h3>Log in</h3>
-                            <form action="#" method="#" className="form login">
+                            <div className="form login">
                                 <div className="form_field">
                                     <label htmlFor="login_username">
                                         <FaUser />
@@ -48,6 +86,13 @@ function Login() {
 
                                     <input
                                         type="text"
+                                        value={user.email}
+                                        onChange={(e) => {
+                                            setUser({
+                                                ...user,
+                                                email: e.target.value,
+                                            });
+                                        }}
                                         className="form_input"
                                         id="login_username"
                                         name="username"
@@ -68,16 +113,24 @@ function Login() {
                                         name="password"
                                         placeholder="Password"
                                         required
+                                        value={user.password}
+                                        onChange={(e) => {
+                                            setUser({
+                                                ...user,
+                                                password: e.target.value,
+                                            });
+                                        }}
                                     />
                                 </div>
                                 <div className="form_field">
                                     <input
                                         type="submit"
                                         className="form_input"
+                                        onClick={loginapi}
                                         value="Sign In"
                                     />
                                 </div>
-                            </form>
+                            </div>
                             <p className="forgot_password">Forgot password?</p>
                             <p className="registernew">
                                 Don&apos;t have an account?
@@ -97,6 +150,7 @@ function Login() {
                             height="100%"
                         />
                     </div>
+                    <ToastContainer />
                 </div>
             </Container>
         </>

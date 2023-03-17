@@ -1,10 +1,10 @@
 // import { newspaper } from 'Asset/data/newspaper';
-import { Container } from 'Components';
+import { Container, LoadButton } from 'Components';
 import React, { useState } from 'react';
 // import { NavLink } from 'react-router-dom';
 // import logo from '../../Asset/image/logo.svg';
 import './main_page.scss';
-import { LoadButton } from 'Elements';
+
 import axios from 'axios';
 // import { TrackBtn } from 'Elements';
 
@@ -22,6 +22,7 @@ function Newspaper() {
                     autoClose: 2000,
                     transition: Slide,
                 });
+                setLoading(false);
                 return res;
             })
             .catch((err) => {
@@ -29,9 +30,9 @@ function Newspaper() {
                     autoClose: 2000,
                     transition: Slide,
                 });
+                setLoading(false);
                 return err;
             });
-        setLoading(false);
     };
     // useEffect(() => {
     //     console.log(loading);

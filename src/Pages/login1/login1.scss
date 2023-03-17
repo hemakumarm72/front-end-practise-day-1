@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600&family=Montserrat:wght@400;500&display=swap');
+.logincontainer {
+    background-color: #e5e5e5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logincontent {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    h1 {
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 80px;
+        /* identical to box height */
+
+        text-align: center;
+
+        color: #224957;
+    }
+    p {
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+
+        text-align: center;
+        padding: 30px 0px 10px 0;
+        color: #224957;
+    }
+}
+
+.loginflied {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+    > input {
+        background: #224957;
+        border-radius: 10px;
+        width: 300px;
+        height: 45px;
+        color: rgba(227, 225, 225, 0.825);
+        margin: 0.7rem 0;
+        padding: 0 1rem;
+    }
+    > input[type='text']::placeholder {
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #ffffff;
+        /* identical to box height, or 143% */
+    }
+
+    .labeldiv {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        width: 293px;
+        label > span {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+            text-align: center;
+            color: #093545;
+        }
+        > p {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+            /* identical to box height */
+            padding: 0 0;
+            text-align: center;
+            color: #000000;
+            cursor: pointer;
+        }
+    }
+
+    button {
+        width: 18.75rem;
+        background: #20df7f;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        &:hover {
+            background: #36b877;
+        }
+    }
+}

@@ -12,8 +12,8 @@ function loadbtn({
         <div>
             <button
                 type="button"
-                id={id || 'dummy'}
                 className="button_submit"
+                id={id || 'dummy'}
                 onClick={loadfunction}
                 disabled={loadingdata}
             >

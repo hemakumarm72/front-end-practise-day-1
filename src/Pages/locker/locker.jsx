@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './locker.scss';
 import LockIcon from '@mui/icons-material/Lock';
 import { Slide, ToastContainer, toast } from 'react-toastify';
-import { LockerButton } from 'Elements';
+import { LockerButton, Container } from 'Components';
 import axios from 'axios';
-import { Container } from 'Components';
+
+// import { Helmetdatas } from '../../Elements';
+
 import { lazy } from '@loadable/component';
 
 const Helmetdatas = lazy(() =>

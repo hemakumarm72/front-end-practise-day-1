@@ -17,7 +17,7 @@ const Newspages = lazy(() =>
     import('Pages').then((module) => module.Newspages)
 );
 
-// const OpenDialogpages = lazy(() =>
+const Login = lazy(() => import('Pages').then((module) => module.Login1)); // const OpenDialogpages = lazy(() =>
 //     import('Pages').then((module) => module.OpenDialog)
 // );
 
@@ -31,7 +31,8 @@ function Routers() {
                     <Route path="/login" element={<Loginpages />} />
                     <Route path="/button" element={<Newspages />} />
                     <Route path="/dummytable" element={<DummyTablepages />} />
-                    <Route path="/" element={<Locker />} />
+                    <Route path="/" extr element={<Locker />} />
+                    <Route path="/login1" element={<Login />} />
                     {/* <Route path="/" element={<OpenDialogpages />} /> */}
 
                     {/* <Route path="/services" component={Logopages} /> */}
