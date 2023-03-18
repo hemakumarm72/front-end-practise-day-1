@@ -10,7 +10,7 @@ const navmenudata = [
     },
     {
         menu: 'login',
-        link: '/login',
+        link: '/login1',
     },
     {
         menu: 'button',
