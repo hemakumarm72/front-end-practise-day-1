@@ -10,7 +10,7 @@ function lockerbtn({ locker_id }) {
         await axios
             .post('https://api.cstsmartlocker.com/locker/lockrelease', {
                 locker_id,
-                userid: 1,
+                userid: 544,
             })
             .then((res) => {
                 toast.success(res.data.message, {
