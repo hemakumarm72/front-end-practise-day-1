@@ -1,16 +1,11 @@
 import React, { Suspense } from 'react';
 // import { BrowserRouter as Routes, Switch, Route } from 'react-router-dom';
-import {
-    BrowserRouter as Router,
-    Route,
-    Routes,
-    Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { lazy } from '@loadable/component';
 import { Loader } from 'Elements';
 import { Locker, Navbar } from 'Pages';
 import { ToastContainer } from 'react-toastify';
-// import ProtectedRoute from 'Components/protectedRouter';
+import ProtectedRoute from 'Components/protectedRouter';
 
 const DummyTablepages = lazy(() =>
     import('Pages').then((module) => module.DummyTable)
@@ -32,13 +27,21 @@ const Login = lazy(() => import('Pages').then((module) => module.Login1)); // co
 
 function Routers() {
     const auth = JSON.parse(localStorage.getItem('token'));
+    console.log(auth);
     return (
         <>
             <Router>
                 <Suspense fallback={<Loader />}>
                     {/* <Header /> */}
                     <Routes>
-                        {/* <Route element={<ProtectedRoute />}> */}
+                        <Route element={<ProtectedRoute />}>
+                            <Route
+                                exact
+                                path="/admin"
+                                element={<Adminpages />}
+                            />
+                            {/* <Route path="/" element={<OpenDialogpages />} /> */}
+                        </Route>
                         <Route exact path="/login" element={<Loginpages />} />
                         <Route exact path="/button" element={<Newspages />} />
                         <Route
@@ -47,21 +50,6 @@ function Routers() {
                             element={<DummyTablepages />}
                         />
                         <Route exact path="/locker" element={<Locker />} />
-
-                        <Route
-                            exact
-                            path="/admin"
-                            element={
-                                auth ? (
-                                    <Adminpages />
-                                ) : (
-                                    <Navigate to="/login1" />
-                                )
-                            }
-                        />
-
-                        {/* <Route path="/" element={<OpenDialogpages />} /> */}
-                        {/* </Route> */}
                         <Route exact path="/login1" element={<Login />} />
 
                         <Route exact path="/" element={<Navbar />} />
