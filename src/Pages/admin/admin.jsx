@@ -19,7 +19,7 @@ const admin = () => {
                 });
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 toast.error(err?.response?.data?.data?.message ?? err, {
                     autoClose: 2000,
                     transition: Slide,
@@ -33,7 +33,7 @@ const admin = () => {
         }
         renderAfterCalled.current = true; // single fetch api
     }, []);
-    console.log(getbookingdata);
+    // console.log(getbookingdata);
     return (
         <div>
             <p>admin</p>

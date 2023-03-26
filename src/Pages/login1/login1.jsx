@@ -37,7 +37,7 @@ const login1 = () => {
             })
             .catch((err) => {
                 setLoading(false);
-                console.log(err);
+                //   console.log(err);
                 toast.error(err?.response?.data?.data?.message ?? err, {
                     autoClose: 2000,
                     transition: Slide,
