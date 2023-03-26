@@ -1,9 +1,11 @@
 import axios from 'axios';
+
 // import { Slide, toast } from 'react-toastify';
 
 // const navigate = useNavigate();
 
 // console.log(process.env.REACT_APP_SERVER);
+
 const instance = axios.create({
     baseURL: process.env.REACT_APP_SERVER,
     headers: {
@@ -60,7 +62,8 @@ instance.interceptors.response.use(
                             })
                             .catch(() => {
                                 localStorage.removeItem('token');
-                                window.location.pathname = '/login1';
+
+                                // window.location.pathname = '/login1';
                                 // console.log(
                                 //     error?.response?.data?.data?.message
                                 // );
