@@ -62,7 +62,7 @@ instance.interceptors.response.use(
                             })
                             .catch(() => {
                                 localStorage.removeItem('token');
-
+                                window.location.href = '/login1';
                                 // window.location.pathname = '/login1';
                                 // console.log(
                                 //     error?.response?.data?.data?.message

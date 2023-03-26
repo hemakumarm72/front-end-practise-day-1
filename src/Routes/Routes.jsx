@@ -26,8 +26,8 @@ const Login = lazy(() => import('Pages').then((module) => module.Login1)); // co
 // );
 
 function Routers() {
-    const auth = JSON.parse(localStorage.getItem('token'));
-    console.log(auth);
+    // const auth = JSON.parse(localStorage.getItem('token'));
+    // console.log(auth);
     return (
         <>
             <Router>
