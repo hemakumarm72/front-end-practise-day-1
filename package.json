@@ -30,7 +30,10 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "rimraf ./build && react-scripts build && rimraf ./build/**/*.map",
+        "build": "react-scripts build",
+        "probuild": "rimraf ./build && react-scripts build && rimraf ./build/**/*.map",
+        "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+        "serve": "serve -s build -l 3001",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

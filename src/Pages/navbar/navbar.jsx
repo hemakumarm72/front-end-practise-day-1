@@ -20,10 +20,13 @@ const navmenudata = [
         menu: 'dummytable',
         link: '/dummytable',
     },
-
+    {
+        menu: 'Admin',
+        link: '/admin',
+    },
     {
         menu: 'login1',
-        link: '/login1',
+        link: '/login',
     },
 ];
 
@@ -31,7 +34,11 @@ function Navmenu() {
     return (
         <nav>
             {navmenudata.map((d) => (
-                <NavLink activeClassName="active" exact to={d.link}>
+                <NavLink
+                    className={({ isActive }) => (isActive ? 'active' : '')}
+                    to={d.link}
+                    key={Math.random()}
+                >
                     {d.menu}
                 </NavLink>
             ))}

@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
 import './login1.scss';
 import { Checkbox, Container, LoadButton } from 'Components';
+import { Slide, toast } from 'react-toastify';
+// import axios from 'axios';
+import apiuser from 'api/api';
+import { useNavigate } from 'react-router-dom';
 
 const login1 = () => {
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
     const [user, setUser] = useState({
         email: '',
         password: '',
     });
-    const [loading, setLoading] = useState(false);
-
     const submitlogin = () => {
         setLoading(true);
-        setTimeout(() => {
-            console.log('submitlogin');
-            setLoading(false);
-        }, 2000);
+        apiuser
+            .login(user)
+            .then((res) => {
+                if (res) {
+                    const Token = res?.data?.data?.token ?? null;
+
+                    localStorage.setItem('token', JSON.stringify(Token));
+                    console.log(
+                        'token',
+                        JSON.parse(localStorage.getItem('token'))
+                    );
+                    setLoading(false);
+                    toast.success(res?.data?.data?.message, {
+                        autoClose: 2000,
+                        transition: Slide,
+                    });
+                    navigate('/admin');
+                }
+            })
+            .catch((err) => {
+                setLoading(false);
+                console.log(err);
+                toast.error(err?.response?.data?.data?.message ?? err, {
+                    autoClose: 2000,
+                    transition: Slide,
+                });
+                return err;
+            });
     };
     return (
         <div>
@@ -55,7 +84,11 @@ const login1 = () => {
                                 required
                             />
                             <div className="labeldiv">
-                                <Checkbox label="Remember me" checked={false} />
+                                <Checkbox
+                                    label="Remember me"
+                                    checked={isChecked}
+                                    checkedSet={setIsChecked}
+                                />
                                 <p>Forgot password?</p>
                             </div>
                             {/* <button type="button">login</button> */}

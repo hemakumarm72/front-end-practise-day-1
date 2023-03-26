@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import MaterialReactTable, {
     MRT_ToggleGlobalFilterButton,
     MRT_ToggleFiltersButton,
@@ -31,6 +31,7 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 function dummytable() {
     const [open, setOpen] = useState(false);
     const [data_id, setData_id] = useState('');
+    const renderAfterCalled = useRef(false);
 
     const [loading, setLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -187,7 +188,10 @@ function dummytable() {
     };
 
     useEffect(() => {
-        fetch();
+        if (!renderAfterCalled.current) {
+            fetch();
+        }
+        renderAfterCalled.current = true;
     }, []);
     return (
         <div>

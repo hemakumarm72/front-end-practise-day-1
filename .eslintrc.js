@@ -33,6 +33,7 @@ module.exports = {
         camelcase: 0,
         'no-underscore-dangle': 0,
         'react/jsx-pascal-case': 0,
+        'class-methods-use-this': 0,
         'import/prefer-default-export': 0,
         'import/no-unresolved': 0,
         'import/no-extraneous-dependencies': [
