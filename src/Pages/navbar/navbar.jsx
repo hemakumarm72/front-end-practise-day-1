@@ -24,9 +24,14 @@ const navmenudata = [
         menu: 'Admin',
         link: '/admin',
     },
+
     {
         menu: 'login1',
         link: '/login',
+    },
+    {
+        menu: 'Redux',
+        link: '/redux',
     },
 ];
 

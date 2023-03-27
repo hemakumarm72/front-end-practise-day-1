@@ -36,10 +36,9 @@ module.exports = {
         'class-methods-use-this': 0,
         'import/prefer-default-export': 0,
         'import/no-unresolved': 0,
-        'import/no-extraneous-dependencies': [
-            'error',
-            { devDependencies: true },
-        ],
+
+        'import/no-extraneous-dependencies': 0,
+
         'no-console': 0,
         'react/prefer-stateless-function': 0,
         'react/state-in-constructor': 0,
