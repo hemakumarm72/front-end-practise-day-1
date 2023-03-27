@@ -30,8 +30,12 @@ const navmenudata = [
         link: '/login',
     },
     {
-        menu: 'Redux',
+        menu: 'Reduxbasic',
         link: '/redux',
+    },
+    {
+        menu: 'Reduxadvanced',
+        link: '/redux1',
     },
 ];
 

@@ -19,6 +19,7 @@ const Newspages = lazy(() =>
     import('Pages').then((module) => module.Newspages)
 );
 const Reduxpages = lazy(() => import('Pages').then((module) => module.redux));
+const Reduxpages1 = lazy(() => import('Pages').then((module) => module.redux1));
 
 const Adminpages = lazy(() => import('Pages').then((module) => module.Admin));
 
@@ -52,8 +53,10 @@ function Routers() {
                         />
                         <Route exact path="/locker" element={<Locker />} />
                         <Route exact path="/redux" element={<Reduxpages />} />
+                        <Route exact path="/redux1" element={<Reduxpages1 />} />
+                        ;
                         <Route exact path="/login1" element={<Login />} />
-
+                        ;
                         <Route exact path="/" element={<Navbar />} />
                         {/* <Route path="/services" component={Logopages} /> */}
                     </Routes>
