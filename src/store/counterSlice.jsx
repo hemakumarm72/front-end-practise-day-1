@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { Slide, toast } from 'react-toastify';
 
 export const counterSlice = createSlice({
     name: 'counter',
@@ -7,6 +8,10 @@ export const counterSlice = createSlice({
     },
     reducers: {
         increment: (state) => {
+            // toast.success('ddd', {
+            //     autoClose: 2000,
+            //     transition: Slide,
+            // });
             return { counter: state.counter + 1 };
         },
         decrement: (state) => {

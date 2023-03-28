@@ -1,4 +1,6 @@
+import { histroy } from 'Routes/Routes';
 import axios from 'axios';
+import { Slide, toast } from 'react-toastify';
 
 // import { Slide, toast } from 'react-toastify';
 
@@ -60,9 +62,16 @@ instance.interceptors.response.use(
                                 ); // update of access token only
                                 instance.defaults.headers.common.Authorization = `bearer ${token.accessToken}`;
                             })
-                            .catch(() => {
+                            .catch((error) => {
                                 localStorage.removeItem('token');
-                                window.location.href = '/login1';
+                                toast.error(
+                                    error?.response?.data?.data?.message ?? err,
+                                    {
+                                        autoClose: 2000,
+                                        transition: Slide,
+                                    }
+                                );
+                                histroy.push('/login1');
                                 // window.location.pathname = '/login1';
                                 // console.log(
                                 //     error?.response?.data?.data?.message

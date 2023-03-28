@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Styles/index.css';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import App from './App';
 import store from './store/store';
 
@@ -9,7 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
         <React.StrictMode>
-            <App />
+            <>
+                <App />
+                <ToastContainer />
+            </>
         </React.StrictMode>
     </Provider>
 );
