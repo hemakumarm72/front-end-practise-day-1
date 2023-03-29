@@ -26,7 +26,7 @@ const Adminpages = lazy(() => import('Pages').then((module) => module.Admin));
 const Login = lazy(() => import('Pages').then((module) => module.Login1)); // const OpenDialogpages = lazy(() =>
 //     import('Pages').then((module) => module.OpenDialog)
 // );
-export const histroy = createBrowserHistory();
+export const history = createBrowserHistory();
 function Routers() {
     // const auth = JSON.parse(localStorage.getItem('token'));
     // console.log(auth);

@@ -42,6 +42,9 @@ const admin = () => {
                     <p key={data.id}>{data.room_name}</p>
                 </div>
             ))}
+            <button type="button" onClick={dummyfetch}>
+                Click
+            </button>
         </div>
     );
 };

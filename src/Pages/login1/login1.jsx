@@ -14,9 +14,9 @@ const login1 = () => {
         email: '',
         password: '',
     });
-    const submitlogin = () => {
+    const submitlogin = async () => {
         setLoading(true);
-        apiuser
+        await apiuser
             .login(user)
             .then((res) => {
                 if (res) {

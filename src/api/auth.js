@@ -1,4 +1,5 @@
-import { histroy } from 'Routes/Routes';
+// import { histroy } from 'Routes/Routes';
+import { history } from 'Routes/Routes';
 import axios from 'axios';
 import { Slide, toast } from 'react-toastify';
 
@@ -71,13 +72,14 @@ instance.interceptors.response.use(
                                         transition: Slide,
                                     }
                                 );
-                                histroy.push('/login1');
-                                // window.location.pathname = '/login1';
+                                history.push('/login1');
+                                window.location.pathname = '/login1';
                                 // console.log(
                                 //     error?.response?.data?.data?.message
                                 // );
                             });
                     }
+
                     return instance(originalConfig);
                 } catch (_error) {
                     if (_error.response && _error.response.data) {
