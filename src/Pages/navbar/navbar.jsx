@@ -37,6 +37,10 @@ const navmenudata = [
         menu: 'Reduxadvanced',
         link: '/redux1',
     },
+    {
+        menu: 'Css',
+        link: '/csspage',
+    },
 ];
 
 function Navmenu() {

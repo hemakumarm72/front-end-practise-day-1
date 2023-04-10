@@ -8,3 +8,4 @@ export { default as Navbar } from 'Pages/navbar/navbar';
 export { default as Admin } from 'Pages/admin/admin';
 export { default as redux } from 'Pages/reduxpages/reduxdemo';
 export { default as redux1 } from 'Pages/reduxtoolkit/reduxtoolkit';
+export { default as csspages } from 'Pages/css_learn/csspage';

@@ -22,6 +22,7 @@ const Reduxpages = lazy(() => import('Pages').then((module) => module.redux));
 const Reduxpages1 = lazy(() => import('Pages').then((module) => module.redux1));
 
 const Adminpages = lazy(() => import('Pages').then((module) => module.Admin));
+const Csspage = lazy(() => import('Pages').then((module) => module.csspages)); // const OpenDialogpages = lazy(() =>
 
 const Login = lazy(() => import('Pages').then((module) => module.Login1)); // const OpenDialogpages = lazy(() =>
 //     import('Pages').then((module) => module.OpenDialog)
@@ -46,6 +47,7 @@ function Routers() {
                         path="/dummytable"
                         element={<DummyTablepages />}
                     />
+                    <Route exact path="/csspage" element={<Csspage />} />
                     <Route exact path="/locker" element={<Locker />} />
                     <Route exact path="/redux" element={<Reduxpages />} />
                     <Route exact path="/redux1" element={<Reduxpages1 />} />
